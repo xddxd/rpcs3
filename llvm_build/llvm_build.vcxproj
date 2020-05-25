@@ -57,13 +57,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <NMakePreprocessorDefinitions />
     <NMakeBuildCommandLine>$(CmakeCLI)
-      msbuild.exe ALL_BUILD.vcxproj /t:build /p:Configuration=Release /p:ForceImportBeforeCppTargets=$(SolutionDir)common_default.props /m
+      msbuild.exe ALL_BUILD.vcxproj /t:build /p:Configuration=Release /p:ForceImportBeforeCppTargets=$(SolutionDir)common_default.props /m:1
     </NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>$(CmakeCLI)
-      msbuild.exe ALL_BUILD.vcxproj /t:rebuild /p:Configuration=Release /p:ForceImportBeforeCppTargets=$(SolutionDir)common_default.props /m
+      msbuild.exe ALL_BUILD.vcxproj /t:rebuild /p:Configuration=Release /p:ForceImportBeforeCppTargets=$(SolutionDir)common_default.props /m:1
     </NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>$(CmakeCLI)
-      msbuild.exe ALL_BUILD.vcxproj /t:clean /p:Configuration=Release /p:ForceImportBeforeCppTargets=$(SolutionDir)common_default.props /m
+      msbuild.exe ALL_BUILD.vcxproj /t:clean /p:Configuration=Release /p:ForceImportBeforeCppTargets=$(SolutionDir)common_default.props /m:1
     </NMakeCleanCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup>
