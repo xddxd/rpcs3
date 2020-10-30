@@ -7758,11 +7758,20 @@ public:
 				return;
 			}
 
-			const auto ma = eval(sext<s32[4]>(fcmp_uno(a != fsplat<f32[4]>(0.))));
-			const auto mb = eval(sext<s32[4]>(fcmp_uno(b != fsplat<f32[4]>(0.))));
-			const auto ca = eval(bitcast<f32[4]>(bitcast<s32[4]>(a) & mb));
-			const auto cb = eval(bitcast<f32[4]>(bitcast<s32[4]>(b) & ma));
-			set_vr(op.rt, fm(ca, cb));
+			if (g_cfg.core.more_accurate_FM)
+			{
+				const auto ca = eval(clamp_smax(a));
+				const auto cb = eval(clamp_smax(b));
+				set_vr(op.rt, fm(ca, cb));
+			}
+			else
+			{
+				const auto ma = eval(sext<s32[4]>(fcmp_uno(a != fsplat<f32[4]>(0.))));
+				const auto mb = eval(sext<s32[4]>(fcmp_uno(b != fsplat<f32[4]>(0.))));
+				const auto ca = eval(bitcast<f32[4]>(bitcast<s32[4]>(a) & mb));
+				const auto cb = eval(bitcast<f32[4]>(bitcast<s32[4]>(b) & ma));
+				set_vr(op.rt, fm(ca, cb));
+			}
 		}
 		else
 			set_vr(op.rt, get_vr<f32[4]>(op.ra) * get_vr<f32[4]>(op.rb));

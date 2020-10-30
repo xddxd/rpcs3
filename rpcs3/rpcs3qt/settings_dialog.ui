@@ -1880,6 +1880,13 @@
                </widget>
               </item>
               <item>
+               <widget class="QCheckBox" name="moreaccurateFM">
+                <property name="text">
+                 <string>More accurate SPU FM</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QCheckBox" name="accurateRSXAccess">
                 <property name="text">
                  <string>Accurate RSX reservation access</string>
