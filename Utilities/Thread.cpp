@@ -2709,9 +2709,9 @@ u64 thread_ctrl::get_affinity_mask(thread_class group)
 						break;
 					case 16:
 						// 1700, 1800, 2700, TR 1900X family
-						ppu_mask = 0b1111111100000000;
-						spu_mask = ppu_mask;
-						rsx_mask = 0b0000000000111100;
+						ppu_mask = 0b0010000010000000;
+						spu_mask = 0b0000101010101010;
+						rsx_mask = 0b1000000000000000;
 						break;
 					case 12:
 						// 1600, 2600 family, Assign threads 3-12
