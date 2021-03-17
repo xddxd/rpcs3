@@ -2774,24 +2774,10 @@ u64 thread_ctrl::get_affinity_mask(thread_class group)
 		}
 		case native_core_arrangement::intel_ht:
 		{
-			/* This has been disabled as it seems to degrade performance instead of improving it.
-			if (thread_count <= 4)
+			if (thread_count >= 12)
 			{
-				//i3 or worse
-				switch (group)
-				{
-				case thread_class::rsx:
-				case thread_class::ppu:
-					return (0b0101 & all_cores_mask);
-				case thread_class::spu:
-					return (0b1010 & all_cores_mask);
-				case thread_class::general:
-					return all_cores_mask;
-				}
+				return (0b10101010101010101010101010101010 & all_cores_mask); // Potentially improves performance by mimicking HT off
 			}
-			*/
-
-			return all_cores_mask;
 		}
 		}
 	}
